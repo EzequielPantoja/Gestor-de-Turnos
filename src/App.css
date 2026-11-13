@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+/* Reset y fondo principal oscuro */
+body {
+  margin: 0;
+  background-color: #171a21;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #a0a6c0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Layout General a pantalla completa */
+.dark-dashboard {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* --- Barra Lateral Izquierda --- */
+.sidebar {
+  width: 260px;
+  background-color: #1e222d;
+  border-right: 1px solid #2a2f3d;
   display: flex;
   flex-direction: column;
+}
+.sidebar-logo {
+  padding: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  border-bottom: 1px solid #2a2f3d;
+}
+.nav-group { padding: 20px; border-bottom: 1px solid #2a2f3d; }
+.nav-group h4 { margin: 0 0 15px 0; font-size: 0.85rem; text-transform: uppercase; color: #6b7280; }
+.nav-group ul { list-style: none; padding: 0; margin: 0; }
+.nav-group li { padding: 8px 12px; margin-bottom: 5px; border-radius: 6px; font-size: 0.9rem; cursor: pointer; }
+.nav-group li:hover { background-color: #2a2f3d; color: white; }
+.nav-group li.active { background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+
+/* --- Contenido Principal --- */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header superior adaptado */
+.header {
+  background: #1e222d;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border-bottom: 1px solid #2a2f3d;
+}
+.header h2 { margin: 0; font-size: 1rem; color: #a0a6c0; display: none; }
+.perfil-badge { background: #2a2f3d; padding: 6px 14px; border-radius: 20px; color: white; font-size: 0.85rem; }
+
+/* Grilla del Dashboard (Centro y Derecha) */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 0;
+  height: calc(100vh - 60px);
+}
+
+/* --- Paneles --- */
+.panel {
+  padding: 25px;
+  overflow-y: auto;
+}
+.form-panel { background-color: #1e222d; border-left: 1px solid #2a2f3d; }
+
+.panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.panel-header h3 { margin: 0; font-size: 1.2rem; color: #ffffff; font-weight: 500; }
+
+/* Botones de acción superior */
+.acciones-top button { 
+  background: transparent; 
+  padding: 6px 12px; 
+  border-radius: 4px; 
+  font-size: 0.85rem; 
+  margin-left: 10px; 
+  cursor: pointer; 
+}
+.btn-outline-red { border: 1px solid #ef4444; color: #ef4444; }
+.btn-outline-blue { border: 1px solid #3b82f6; color: #3b82f6; }
+.close-btn { background: transparent; border: none; color: #a0a6c0; font-size: 1.2rem; cursor: pointer; }
+
+/* --- Formulario --- */
+.form-help { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
+.form-group { margin-bottom: 15px; }
+.form-group-row { display: flex; gap: 15px; }
+.half { flex: 1; }
+
+label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: #a0a6c0; }
+input, select {
+  width: 100%;
+  padding: 10px;
+  background-color: #171a21;
+  border: 1px solid #2a2f3d;
+  border-radius: 6px;
   color: white;
+  box-sizing: border-box;
+}
+input:focus, select:focus { outline: none; border-color: #3b82f6; }
+
+.btn-primary {
+  background: #10b981; /* Verde confirmación */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+  font-weight: 600;
+  margin-top: 15px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+/* --- Lista de Turnos tipo Bloques --- */
+.turno-item {
+  background-color: #2a2f3d;
+  border-left: 4px solid #3b82f6; /* Borde azul indicador */
+  padding: 12px 18px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+.turno-item:nth-child(even) { border-left-color: #8b5cf6; } /* Alterna a púrpura */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.turno-info h4 { margin: 0 0 4px 0; color: white; font-size: 1rem; font-weight: 500; }
+.turno-info p { margin: 0; font-size: 0.85rem; }
+.especialidad { display: none; } /* Oculta especialidad repetida */
+
+.badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
